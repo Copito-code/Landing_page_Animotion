@@ -5,7 +5,7 @@ import styles from '../css/css_components/poll.module.css'; // Asegúrate de apu
 
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 
-const API_URL = 'http://localhost:3001/api/poll';
+const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/poll`;
 
 interface PollOption {
   id: string;

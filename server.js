@@ -25,6 +25,12 @@ insert.run('opt1', 'Sí. Es una herramienta brutal y muy necesaria', '[01]', 0);
 insert.run('opt2', 'Puede ser. Tiene potencial, pero hay que ver para creer', '[02]', 0);
 insert.run('opt3', 'No lo sé, tengo dudas', '[03]', 0);
 
+
+app.get('/', (req, res) => {
+  res.json({ status: 'AniMotion backend online', endpoint: '/api/poll' });
+});
+
+
 app.get('/api/poll', (req, res) => {
   const rows = db.prepare('SELECT * FROM poll_options').all();
   res.json(rows);

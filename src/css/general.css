@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;800&display=swap');
+
+:root{
+    /* Paleta de Colores Cyberpunk */
+    /* --bg-pure-dark: #0a0a12; */
+    --bg-pure-gris:#121218  ;
+    --bg-pure-dark: #050507; /*Fondo ultra oscuro profundo */
+    --bg-card-dark: #;  /* Gris tecnológico de las tarjetas */
+    --neon-cyan: #66f1c1; /* Tu cian brillante */
+    --neon-magenta: #7f00ff;
+    --text-primary: #ffffff;
+    --text-muted: #8a8a93;         /* Gris atenuado para subtextos */
+
+    /* Fuentes */
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--bg-pure-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+
+    /* 🌟 El Grid se queda aquí de forma global para toda la plataforma */
+    background-image: 
+    linear-gradient(to right, rgba(102, 241, 193, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 241, 193, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 30%, rgba(212, 0, 255, 0.228) 0%, transparent 60%);
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    background-attachment: fixed; /* 💡 Hace que el grid se quede fijo y los componentes floten encima al hacer scroll */
+        
+}

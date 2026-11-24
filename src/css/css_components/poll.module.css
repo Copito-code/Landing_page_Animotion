@@ -1,0 +1,268 @@
+.pollSection {
+  width: 100%;
+  padding: 8rem 5%;
+  background-color: #0d0d12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* 🌌 CORE MAGENTA INTACTO */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'><style>@keyframes heartbeat { 0%, 100% { transform: scale(0.75); opacity: 0.4; } 20% { transform: scale(1.1); opacity: 1; } 40% { transform: scale(0.9); opacity: 0.7; } 60% { transform: scale(1.2); opacity: 1; } }</style><circle cx='24' cy='24' r='20' fill='%23ff007f' opacity='0.25'/><circle cx='24' cy='24' r='12' fill='%23ff007f' opacity='0.6'/><circle cx='24' cy='24' r='6' fill='%23ffffff' stroke='%23ff007f' stroke-width='2' style='animation: heartbeat 1.2s infinite ease-in-out; transform-origin: 24px 24px;'/></svg>") 24 24, auto;
+}
+
+.layoutContainer {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1250px;
+  align-items: center;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* --- MANIFIESTO --- */
+.manifestoContainer {
+  width: 100%;
+}
+
+.systemTag {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.manifestoTitle {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.manifestoText {
+  font-size: 1.05rem;
+  color: #a0a0aa;
+  line-height: 1.6;
+}
+
+.manifestoText strong {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(102, 241, 193, 0.3);
+}
+
+/* --- PANEL DE CONTROL DE VOTACIÓN --- */
+.controlPanel {
+  background-color: #13131a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1rem;
+}
+
+.panelTitle { color: #80808a; }
+.panelStatus { color: var(--neon-cyan); }
+
+/* --- OPCIONES DE VOTACIÓN --- */
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.optionCard {
+  position: relative;
+  width: 100%;
+  background-color: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 1.1rem 1.2rem;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: inherit; /* Mantiene el cursor de luz magenta */
+}
+
+.optionCard:not(:disabled):hover {
+  border-color: var(--neon-cyan);
+  transform: translateX(4px);
+  box-shadow: 0 0 15px rgba(102, 241, 193, 0.15);
+}
+
+.optionLocked {
+  cursor: default;
+}
+
+/* Opción elegida por el usuario */
+.optionSelected {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(102, 241, 193, 0.2);
+}
+
+/* Barra de porcentaje en el fondo de la tarjeta */
+.resultBarFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(177, 0, 255, 0.15), rgba(102, 241, 193, 0.2));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.optionSelected .resultBarFill {
+  background: linear-gradient(90deg, rgba(177, 0, 255, 0.25), rgba(102, 241, 193, 0.35));
+}
+
+.optionContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.optionTextGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.optionTag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  font-weight: bold;
+}
+
+.optionLabel {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.optionPercentage {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--neon-cyan);
+}
+
+/* --- PIE DEL PANEL --- */
+.panelFooter {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #50505a;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1rem;
+}
+
+/* --- COLUMNA DE SPLINE (INTACTA) --- */
+.splineLoader {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(13, 13, 18, 0.5);
+  border: 1px dashed rgba(0, 242, 254, 0.2);
+  border-radius: 8px;
+}
+
+.loaderText {
+  font-family: monospace;
+  color: #00f2fe;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseLoader {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.splineActive {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+.splinePassive {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none; 
+}
+
+.splineColumn {
+  width: 100%;
+  height: 550px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splineColumn canvas {
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 968px) {
+  .layoutContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .splineColumn {
+    height: 400px;
+    grid-row: 1;
+  }
+  .manifestoTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .controlPanel {
+    padding: 1.5rem;
+  }
+  .optionContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+  .optionPercentage {
+    align-self: flex-end;
+  }
+}

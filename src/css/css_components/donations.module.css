@@ -1,0 +1,522 @@
+.donationsSection {
+  width: 100%;
+  padding: 8rem 5%;
+  background-color: #0d0d12; /* El negro grisáceo base */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  /* 🌌 CORE MAGENTA: Más grande, ultravívido y latiendo como un corazón de energía */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48' fill='none'><style>@keyframes heartbeat { 0%, 100% { transform: scale(0.75); opacity: 0.4; } 20% { transform: scale(1.1); opacity: 1; } 40% { transform: scale(0.9); opacity: 0.7; } 60% { transform: scale(1.2); opacity: 1; } }</style><circle cx='24' cy='24' r='20' fill='%23ff007f' opacity='0.25'/><circle cx='24' cy='24' r='12' fill='%23ff007f' opacity='0.6'/><circle cx='24' cy='24' r='6' fill='%23ffffff' stroke='%23ff007f' stroke-width='2' style='animation: heartbeat 1.2s infinite ease-in-out; transform-origin: 24px 24px;'/></svg>") 24 24, auto;
+}
+
+/* Rejilla de división para que convivan el contenido y el modelo 3D */
+.layoutContainer {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1250px;
+  align-items: center;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* --- MANIFIESTO --- */
+.manifestoContainer {
+  width: 100%;
+}
+
+.systemTag {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.manifestoTitle {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.manifestoText {
+  font-size: 1.05rem;
+  color: #a0a0aa;
+  line-height: 1.6;
+}
+
+.manifestoText strong {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(102, 241, 193, 0.3);
+}
+
+/* --- PANEL DE CONTROL DE DONACIÓN --- */
+.controlPanel {
+  background-color: #13131a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1rem;
+}
+
+.panelTitle { color: #80808a; }
+.panelStatus { color: var(--neon-cyan); }
+
+/* --- ÁREA DE INPUT Y BOTÓN --- */
+.interactionArea {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 0 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--neon-cyan);
+}
+
+.currencySymbol {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #50505a;
+}
+
+.donationInput {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.8rem 0.5rem;
+  font-family: var(--font-mono);
+}
+
+.donationInput::-webkit-outer-spin-button,
+.donationInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.currencyCode {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #50505a;
+}
+
+.donateButton {
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  /* 🚨 CRUCIAL: Hereda el cursor de luz magenta de la sección de donaciones */
+  cursor: inherit;
+}
+
+.donateButton:hover {
+  background-color: var(--neon-cyan);
+  color: #0d0d12;
+  box-shadow: 0 0 20px rgba(102, 241, 193, 0.3);
+}
+
+/* --- BARRA DE PROGRESO --- */
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.progressMetrics {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.metricLabel { color: #80808a; }
+.metricValue { color: var(--text-primary); font-weight: bold; }
+.metricGoal { color: #50505a; font-weight: normal; }
+
+.progressBarTrack {
+  width: 100%;
+  height: 8px;
+  background-color: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-purple), var(--neon-cyan));
+  box-shadow: 0 0 8px rgba(102, 241, 193, 0.4);
+}
+
+.progressFooter {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #50505a;
+}
+
+/* --- COLUMNA DE SPLINE (EL CONTENEDOR 3D) --- */
+
+/* Contenedor del loader con el tamaño exacto que tendrá el 3D */
+.splineLoader {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(13, 13, 18, 0.5);
+  border: 1px dashed rgba(0, 242, 254, 0.2);
+  border-radius: 8px;
+}
+
+.loaderText {
+  font-family: monospace;
+  color: #00f2fe;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  animation: pulseLoader 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseLoader {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Estado Activo: Muestra el 3D con fluidez total */
+.splineActive {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+/* Estado Pasivo: Oculta el lienzo y congela WebGL para salvar la GPU */
+.splinePassive {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  display: none; 
+}
+
+
+.splineColumn {
+  width: 100%;
+  height: 550px; /* Altura ideal para apreciar el avatar */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Asegura que el canvas interno ocupe todo el espacio de forma limpia */
+.splineColumn canvas {
+  width: 100% !important;
+  height: 100% !important;
+  outline: none;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 968px) {
+  .layoutContainer {
+    grid-template-columns: 1fr; /* Pasa a formato vertical en tabletas/móviles */
+    gap: 2rem;
+  }
+  .splineColumn {
+    height: 400px; /* Reducción de tamaño en pantallas pequeñas */
+    grid-row: 1; /* El avatar se posiciona arriba para mejor impacto visual */
+  }
+  .manifestoTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .interactionArea {
+    flex-direction: column;
+  }
+  .donateButton {
+    width: 100%;
+    text-align: center;
+  }
+  .controlPanel {
+    padding: 1.5rem;
+  }
+}
+
+
+/* PROTOCOLO DE ESTILOS PARA PAYMENT_MODAL */
+/* Fondo oscuro translúcido con desenfoque de cristal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(7, 7, 10, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Por encima de cualquier header o contenido */
+}
+
+/* Contenedor principal del modal (Chasis Cyberpunk) */
+.modalContent {
+  background-color: #13131a;
+  border: 1px solid rgba(102, 241, 193, 0.2); /* Borde cian sutil */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(102, 241, 193, 0.05);
+  border-radius: 8px;
+  width: 90%;
+  height: 700px;
+  max-width: 480px;
+  overflow: hidden;
+  font-family: var(--font-sans, sans-serif);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabecera del Modal */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d0d12;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modalHeader h3 {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: var(--neon-cyan, #66f1c1);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* Botón de cerrar ('✕') */
+.closeModalBtn {
+  background: transparent;
+  border: none;
+  color: #50505a;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.closeModalBtn:hover {
+  color: #ff007f; /* Cambia a magenta al pasar el mouse */
+}
+
+/* Cuerpo del modal */
+.modalBody {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  flex: 1;
+  overflow-y: auto;
+}
+
+
+/* Convertir la barra de scroll en estetica neon retro */
+.modalBody::-webkit-scrollbar {
+  width: 6px; /* Una barra delgada y elegante */
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #0d0d12; /* Fondo oscuro que combina con el QR y los inputs */
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: rgba(102, 241, 193, 0.3); /* Color cian translúcido */
+  border-radius: 10px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan, #66f1c1); /* Brilla al pasarle el mouse */
+  box-shadow: 0 0 10px rgba(102, 241, 193, 0.5);
+}
+
+
+
+
+.modalInstructions {
+  font-size: 0.95rem;
+  color: #a0a0aa;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+.modalInstructions strong {
+  color: var(--neon-cyan, #66f1c1);
+}
+
+/* Contenedor del código QR */
+.qrContainer {
+  background-color: #0d0d12;
+  border: 1px dashed rgba(102, 241, 193, 0.3);
+  padding: 1.5rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.qrImage {
+  width: 300px;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: contrast(1.05) brightness(0.95);
+  background: #fff; /* Asegura contraste para escaneo si el QR es transparente */
+  padding: 0.5rem;
+}
+
+.qrOverlayText {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  color: #50505a;
+  letter-spacing: 2px;
+}
+
+/* Rejilla de datos de usuario para copiar */
+.userDataGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Filas interactivas (Botones de copiado) */
+.dataRow {
+  background-color: #0d0d12;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dataRow:hover {
+  border-color: var(--neon-cyan, #66f1c1);
+  background-color: rgba(102, 241, 193, 0.02);
+}
+
+.dataLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: #80808a;
+}
+
+.dataValue {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  color: var(--text-primary, #ffffff);
+  word-break: break-all;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón de confirmación inferior */
+.modalFooter {
+  margin-top: 0.5rem;
+}
+
+.modalConfirmBtn {
+  width: 100%;
+  padding: 1rem;
+  background: transparent;
+  border: 1px solid var(--neon-purple, #b100ff);
+  color: var(--neon-purple, #b100ff);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.modalConfirmBtn:hover {
+  background-color: var(--neon-purple, #b100ff);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(177, 0, 255, 0.4);
+}
+
+/* Asegurar que los elementos interactivos del modal utilicen el cursor global heredado si aplica */
+.dataRow, .modalConfirmBtn, .closeModalBtn {
+  cursor: inherit; 
+}
+
+
+/* Estilo del icono vectorial de copiado */
+.copyIcon {
+  font-size: 0.95rem; /* Ajustado para que tenga proporción estética con tus números */
+  color: #50505a;     /* Gris apagado cyberpunk por defecto */
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Cuando el usuario pasa el mouse sobre la fila entera, el icono se enciende en cian */
+.dataRow:hover .copyIcon {
+  color: var(--neon-cyan, #66f1c1);
+}
+
+/* Efecto táctil de pulsación al hacer clic */
+.dataRow:active .copyIcon {
+  transform: scale(0.85);
+}

@@ -1,0 +1,131 @@
+.showcaseContainer {
+  width: 100%;
+  padding: 4rem 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ==========================================================================
+   DISEÑO DE LA TABLETA GRÁFICA (VIDEO PRINCIPAL)
+   ========================================================================== */
+.tabletWrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #101016; /* Marco de la tableta */
+  border: 4px solid #1a1a24;
+  border-radius: 24px; /* Bordes redondeados de tableta física */
+  padding: 2rem; /* El grosor del marco negro de la tableta */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(102, 241, 193, 0.05);
+  position: relative;
+}
+
+/* Luces LED decorativas en el marco de la tableta */
+.tabletWrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.tabletHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+.tabletTitle {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Contenedor responsivo para mantener la proporción 16:9 del video */
+.videoResponsive {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Relación de aspecto 16:9 */
+  border-radius: 8px;
+  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.videoResponsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border: 0;
+  pointer-events: none; /* Evita que el usuario pause o interactúe directamente */
+}
+
+/* ==========================================================================
+   REJILLA DE VIDEOS SECUNDARIOS (LOS OTROS 4)
+   ========================================================================== */
+.thumbnailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  
+}
+
+.subCard {
+  background-color: var(--bg-pure-gris);
+  border: 1px solid rgba(255, 42, 133, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.subCard:hover {
+  border-color: var(--neon-magenta);
+  box-shadow: 0 0 15px rgba(255, 42, 133, 0.1);
+  transform: translateY(-3px);
+}
+
+.subCardTitle {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Ajustes Responsive */
+@media (max-width: 768px) {
+  .tabletWrapper {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+  .showcaseContainer {
+    padding: 3rem 5%;
+  }
+}

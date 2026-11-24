@@ -1,0 +1,240 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 6rem 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.manifestoSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título Principal de la Sección */
+.mainTitle {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+/* Párrafo Introductorio de "Nosotros" destacado */
+.textBlock {
+  font-family: var(--font-sans); /* Fuente limpia para lectura fluida */
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 900px;
+  margin-bottom: 4rem;
+}
+
+/* Rejilla para Misión y Visión */
+.subGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+ 
+  margin-bottom: 4rem;
+}
+
+/* Tarjetas artísticas minimalistas para Misión y Visión */
+.artCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0) 100%);
+  border-top: 1px solid rgba(42, 255, 230, 0.3); /* Línea de diseño sutil magenta */
+  padding: 2rem; /* Espacio enfocado en el contenido */
+  background-color: #101016;
+}
+
+.subCardTitle {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.2rem;
+}
+
+.cardText {
+  font-family: var(--font-sans);
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- SECCIÓN OBJETIVOS --- */
+.objectivesContainer {
+  border-top: 1px solid rgba(102, 241, 193, 0.2); /* Separador sutil color cian */
+  padding-top: 3rem;
+}
+
+.objectivesList {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.objectivesList li {
+  position: relative;
+  padding-left: 2rem;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Viñeta artística retro-futurista (un cuadrado de neón en vez de una flecha) */
+.objectivesList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--neon-cyan);
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+
+/* --- ESTILOS DEL EQUIPO (DEV CARDS) --- */
+.teamSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Contenedor principal que ajusta el tamaño máximo de las tarjetas en pantalla */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Tarjetas más anchas */
+  gap: 3rem; /* Más separación entre ellas */
+  max-width: 1100px; /* Evita que se estiren infinitamente en monitores gigantes */
+  margin: 0 auto; /* Centra el bloque entero en la sección */
+  width: 100%;
+}
+
+/* 🌟 LA TARJETA VERTICAL */
+.devCard {
+  background-color: var(--bg-card-dark);
+  border: 1px solid rgba(102, 241, 193, 0.2);
+  border-radius: 8px;
+  padding: 3rem 2rem; /* Más espacio interno arriba y abajo */
+  display: flex;
+  background-color: #101016;
+  
+  /* CAMBIO CLAVE: Alinea todo en columna vertical y centrado */
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+  
+  gap: 2rem; /* Espaciado generoso entre foto y textos */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.devCard:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 25px rgba(102, 241, 193, 0.15); /* Brillo de neón más intenso */
+  transform: translateY(-5px); /* Flota un poco más hacia arriba */
+}
+
+
+/* --- REDES SOCIALES --- */
+.devSocials {
+  margin: 0.5rem 0 1rem 0; /* Espaciado saludable entre el rol y la biografía */
+  display: flex;
+  flex-direction: column; /* Pone un enlace debajo del otro */
+  gap: 0.6rem;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;    /* Alinea verticalmente el icono y el texto en el centro */
+  gap: 0.8rem;            /* Espacio perfecto entre el icono de LinkedIn y tu nombre */
+  color: #80808a;         /* Color grisáceo base elegante para que no compita con el título */
+  font-family: var(--font-mono, monospace); /* Estética de código para tu nombre */
+  font-size: 0.9rem;      /* Tamaño de texto limpio */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+}
+
+
+.socialIcon svg {
+  font-size: 1.3rem;      
+}
+
+
+.socialIcon:hover {
+  color: var(--neon-cyan);
+  transform: translateY(-2px);
+}
+
+
+
+/* AVATAR MÁS GRANDE */
+.avatarWrapper {
+  width: 160px;  /* Aumentamos de 90px a 160px para que destaque el GIF */
+  height: 160px; /* Proporción 1:1 cuadrada perfecta */
+  border-radius: 6px;
+  border: 2px solid var(--neon-cyan); /* Borde un toque más grueso */
+  box-shadow: 0 0 15px rgba(102, 241, 193, 0.1);
+  overflow: hidden;
+  background-color: #121218;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CONTENEDOR DE TEXTO CENTRADO */
+.devInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.devName {
+  font-size: 1.6rem; /* Nombre más grande y legible */
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.devRole {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+}
+
+.devBio {
+  font-size: 0.98rem; /* Cuerpo de texto ligeramente más grande */
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 340px; /* Evita que las líneas de texto se vuelvan demasiado largas y cansadas de leer */
+}
+
+/* Responsive para celulares */
+@media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+  .avatarWrapper {
+    width: 140px;
+    height: 140px;
+  }
+}

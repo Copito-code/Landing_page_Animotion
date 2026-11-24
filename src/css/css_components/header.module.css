@@ -1,0 +1,146 @@
+
+
+.heroContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-pure-dark);
+  display: flex;
+  overflow: hidden;
+  
+  /* ✏️ Cambia el puntero por un lápiz de dibujo al entrar al slider */
+  /* 🖋️ Cursor de Lápiz Digital Profesional en código SVG */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'><path d='M6 26L23.5 8.5C24.5 7.5 25.5 7.5 26.5 8.5C27.5 9.5 27.5 10.5 26.5 11.5L9 29L3 29L6 26Z' fill='%231a1a24' stroke='%237f00ff' stroke-width='1.5'/><path d='M6 26L3 29L9 29' fill='%237f00ff'/><circle cx='21' cy='11' r='1.5' fill='%2366f1c1'/><rect x='13.5' y='14.5' width='4' height='1.5' rx='0.75' transform='rotate(-45 13.5 14.5)' fill='%2350505a'/></svg>") 3 29, auto;
+}
+
+/* El lienzo se posiciona de manera absoluta absorbiendo los movimientos */
+.drawingCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Deja pasar los clics si pones botones debajo */
+  z-index: 20; /* Queda por encima del texto y las imágenes */
+}
+
+
+
+.systemTag {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+
+
+/* --- BLOQUE IZQUIERDO: TEXTOS --- */
+.leftScreen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+  z-index: 10;
+  
+  /* Fondo oscuro base */
+  background-color: var(--bg-pure-dark); 
+  
+  /* Creación de la rejilla (grid) de neón retro */
+
+  /* background-image: 
+    linear-gradient(to right, rgba(102, 241, 193, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(102, 241, 193, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px; 
+  background-position: center center; */
+
+
+}
+
+
+
+.headline {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  max-width: 500px;
+  z-index: 5; /* Asegura que queden por encima de la reja */
+}
+
+/* Resaltado cyberpunk para palabras clave */
+.highlightText {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 20px rgba(102, 241, 193, 0.4);
+}
+
+.highlightText2{
+  color: var(--neon-magenta);
+  text-shadow: 0 0 20px rgba(169, 102, 241, 0.4);
+}
+
+/* --- BLOQUE DERECHO: INTERFAZ / SOFTWARE --- */
+.rightScreen {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  background-color: #0d0d11;
+}
+
+.softwareImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  opacity: 0.7; /* Para que se mezcle mejor con el ambiente oscuro */
+}
+
+/* LA MÁSCARA DE FUSIÓN CENTRAL */
+.blendMask {
+  position: absolute;
+  inset: 0;
+  /* Degradado que va desde el fondo oscuro puro (izquierda) hasta transparente (derecha) */
+  background: linear-gradient(
+    to right,
+    var(--bg-pure-dark) 0%,
+    var(--bg-pure-dark) 15%,
+    transparent 80%
+  );
+  z-index: 2;
+  pointer-events: none; /* Permite interactuar con lo que hay detrás si fuera necesario */
+}
+
+/* Efecto de rejilla digital Cyberpunk opcional para dar textura */
+.heroContainer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive básico */
+@media (max-width: 968px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+  .leftScreen {
+    padding: 2rem;
+    justify-content: flex-end;
+    height: 60%;
+  }
+  .rightScreen {
+    height: 40%;
+  }
+  .blendMask {
+    background: linear-gradient(to bottom, var(--bg-pure-dark) 0%, transparent 100%);
+  }
+  .headline {
+    font-size: 2.3rem;
+  }
+}
